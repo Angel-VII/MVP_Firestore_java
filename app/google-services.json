@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486912859246",
+    "project_id": "proyecto-mvp-java",
+    "storage_bucket": "proyecto-mvp-java.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486912859246:android:8e3481a708d4f761739a7f",
+        "android_client_info": {
+          "package_name": "utp.edu.mvp_firestore_java"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486912859246-9lg192kq7f8qaj1ahfprftfgu7dht80d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDkmIuTs-RJ6nt5dGrI-QooCXFwnRjZ7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486912859246-9lg192kq7f8qaj1ahfprftfgu7dht80d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
