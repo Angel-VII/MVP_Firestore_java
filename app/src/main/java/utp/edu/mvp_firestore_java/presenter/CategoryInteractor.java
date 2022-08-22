@@ -23,6 +23,7 @@ public class CategoryInteractor {
 
     CategoryInteractor(CategoryPresenter presenter) {
         this.presenter = presenter;
+        categoryListener();
     }
 
     private void categoryListener() {
