@@ -42,15 +42,15 @@ public class CategoryInteractor {
             position = itemPosition(document.getId());
             if (document_change.getType() == DocumentChange.Type.REMOVED) {
                 list.remove(position);
-                presenter.deleteItem(position);
+                presenter.deleteItemP(position);
             } else {
                 Category category = getCategory(document);
                 if (position >= 0) {
                     list.set(position, category);
-                    presenter.updateItem(position, category);
+                    presenter.updateItemP(position, category);
                 } else {
                     list.add(category);
-                    presenter.addItem(category);
+                    presenter.addItemP(category);
                 }
             }
         }

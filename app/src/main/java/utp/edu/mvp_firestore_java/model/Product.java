@@ -7,7 +7,7 @@ public class Product extends Item {
     public Product() {
     }
 
-    public Product(String description, String price, String id_product, String title_product) {
+    public Product(String id_product, String title_product,String description, String price ) {
         id = id_product;
         title = title_product;
         this.description = description;

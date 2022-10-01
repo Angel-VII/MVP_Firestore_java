@@ -13,17 +13,17 @@ public class CategoryPresenter implements CategoryContract.Presenter {
     }
 
     @Override
-    public void addItem(Category category) {
+    public void addItemP(Category category) {
         view.addItem(category);
     }
 
     @Override
-    public void updateItem(int position, Category category) {
+    public void updateItemP(int position, Category category) {
         view.updateItem(position, category);
     }
 
     @Override
-    public void deleteItem(int position) {
+    public void deleteItemP(int position) {
         view.deleteItem(position);
     }
 }

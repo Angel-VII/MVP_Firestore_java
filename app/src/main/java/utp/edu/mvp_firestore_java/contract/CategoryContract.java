@@ -10,8 +10,8 @@ public interface CategoryContract {
     }
 
     interface Presenter{
-        void addItem(Category category);
-        void updateItem(int position,Category category);
-        void deleteItem(int position);
+        void addItemP(Category category);
+        void updateItemP(int position, Category category);
+        void deleteItemP(int position);
     }
 }

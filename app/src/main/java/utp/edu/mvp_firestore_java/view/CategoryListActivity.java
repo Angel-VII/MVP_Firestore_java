@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,12 @@ public class CategoryListActivity extends AppCompatActivity implements CategoryC
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(mLayoutManager);
 
+       /* Category cat1 = new Category("sda","ruta","dadad");
+        Category cat2 = new Category("sda","ruta","dadad");
+        ArrayList<Category> lista2 = new ArrayList<>();
+        lista2.add(cat1);
+        lista2.add(cat2);*/
+        Log.w("lista con datos", list.size()+"");
         categoryAdapter = new CategoryAdapter(list, this);
 
         recycler.setAdapter(categoryAdapter);
@@ -41,13 +48,15 @@ public class CategoryListActivity extends AppCompatActivity implements CategoryC
     @Override
     public void addItem(Category category) {
         list.add(category);
-        categoryAdapter.notifyItemChanged(list.size()-1);
+        categoryAdapter.notifyItemInserted(list.size()-1);
+        //categoryAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void updateItem(int position, Category category) {
         list.set(position, category);
         categoryAdapter.notifyItemChanged(position);
+        //categoryAdapter.notifyDataSetChanged();
     }
 
     @Override
