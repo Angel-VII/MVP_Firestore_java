@@ -34,12 +34,7 @@ public class CategoryListActivity extends AppCompatActivity implements CategoryC
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(mLayoutManager);
 
-       /* Category cat1 = new Category("sda","ruta","dadad");
-        Category cat2 = new Category("sda","ruta","dadad");
-        ArrayList<Category> lista2 = new ArrayList<>();
-        lista2.add(cat1);
-        lista2.add(cat2);*/
-        Log.w("lista con datos", list.size()+"");
+
         categoryAdapter = new CategoryAdapter(list, this);
 
         recycler.setAdapter(categoryAdapter);

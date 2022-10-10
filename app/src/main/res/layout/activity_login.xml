@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/edContraseñaLogin"
+        android:id="@+id/edContrasenaLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
@@ -60,8 +60,6 @@
 
     <Button
         android:id="@+id/btCrearCuentaLogin"
-
-        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="CREAR UNA CUENTA"

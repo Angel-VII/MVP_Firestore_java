@@ -1,5 +1,7 @@
 package utp.edu.mvp_firestore_java.presenter;
 
+import android.app.Activity;
+
 import utp.edu.mvp_firestore_java.contract.LoginContract;
 
 public class LoginPresenter implements LoginContract.Presenter {
@@ -12,9 +14,8 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void loginEmailPass(String correo, String contraseña) {
-        interactor.loginEmailPass(correo, contraseña);
-
+    public void loginEmailPass(String correo, String contrasena) {
+        interactor.loginEmailPass(correo, contrasena);
     }
 
     @Override
