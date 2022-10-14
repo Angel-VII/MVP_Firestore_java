@@ -1,6 +1,7 @@
 package utp.edu.mvp_firestore_java.view;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     RegistroPresenter presenter;
 
     EditText edNombre, edCorreo, edContrasena, edContrasenaConfirm;
-    Button btLogin;
+    Button btEnviarRegistro, btRegresaLogin;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,23 +30,40 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         edCorreo = findViewById(R.id.edNombreRegistro);
         edContrasena = findViewById(R.id.edPassRegistro);
         edContrasenaConfirm = findViewById(R.id.edPassConfirmRegistro);
-        btLogin = findViewById(R.id.btEnviarResgistro);
+        btEnviarRegistro = findViewById(R.id.btEnviarResgistro);
+        btRegresaLogin = findViewById(R.id.btRegresarLogin);
 
         presenter = new RegistroPresenter(this);
+
+        btEnviarRegistro.setOnClickListener(this);
+        btRegresaLogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.btEnviarResgistro){
-            presenter.registroDatos(
-                    edNombre.getText().toString(),
-                    edCorreo.getText().toString(),
-                    edContrasena.getText().toString());
+        switch (view.getId()) {
+            case R.id.btEnviarResgistro:
+                presenter.registroDatos(
+                        edNombre.getText().toString(),
+                        edCorreo.getText().toString(),
+                        edContrasena.getText().toString());
+                break;
+            case R.id.btRegresarLogin:
+                startActivity(new Intent(this,LoginActivity.class));
+                break;
         }
     }
 
     @Override
     public void registroMensaje(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isValidEmail(String emailToReview) {
+        if (!emailToReview.matches(String.valueOf(R.string.mail_format))) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

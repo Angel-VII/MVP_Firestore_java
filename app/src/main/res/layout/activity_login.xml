@@ -4,80 +4,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor_1"
     android:gravity="center_vertical"
-    android:padding="20dp"
     android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp"
     tools:context=".view.LoginActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="INICIAR SESIÓN"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        android:layout_marginHorizontal="40dp"
+        app:srcCompat="@drawable/vct_avna_logo_1" />
 
-    <EditText
-        android:id="@+id/edCorreoLogin"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Correo"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
 
-    <EditText
-        android:id="@+id/edContrasenaLogin"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="numberPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/edt"
-        app:layout_constraintTop_toBottomOf="@+id/edt"
-        tools:ignore="UnknownId" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
-    <Button
-        android:id="@+id/btContinuarLogin"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:text="Continuar" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="sans-serif"
+                android:text="Iniciar Sesión"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25" />
 
-    <Button
-        android:id="@+id/btCrearCuentaLogin"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="CREAR UNA CUENTA"
-        android:textSize="12sp" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                app:srcCompat="@drawable/vct_avna_logo_2" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="20dp"
-        android:background="?android:attr/listDivider" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text">
 
-    <Button
+                <EditText
+                    android:id="@+id/edCorreoLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp"
+                    android:drawableStart="@drawable/ic_twotone_email_24"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@color/backgroundColor_1"
+                    android:ellipsize="end"
+                    android:ems="10"
+                    android:hint="Correo"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:scrollHorizontally="true"
+
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:endIconMode="password_toggle">
+
+                <EditText
+                    android:id="@+id/edContrasenaLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_twotone_vpn_key_24"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@color/backgroundColor_1"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    tools:ignore="UnknownId" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btContinuarLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Continuar" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="?android:attr/listDivider" />
+
+            <Button
+                android:id="@+id/btCrearCuentaLogin"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CREAR UNA CUENTA"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!--<Button
         android:id="@+id/btContinuarGoogleLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="50dp"
-        android:text="continuar CON GOOGLE"/>
+        android:text="continuar CON GOOGLE"/>-->
 
 </LinearLayout>

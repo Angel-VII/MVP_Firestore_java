@@ -1,8 +1,10 @@
 package utp.edu.mvp_firestore_java.view;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import utp.edu.mvp_firestore_java.R;
+import utp.edu.mvp_firestore_java.Utils.DialogModulo;
 
 public class ModuloAActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,7 +30,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
     LinearLayout linearLayout;
     List<Integer> list;
     int numSeleccionado;
-
+    DialogModulo dialogModulo;
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -53,10 +56,11 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         ibOpcion4 = findViewById(R.id.ibOptionA_4);
 
         list = listNumPrimeOpcion();
+        Log.w("lista", list.toString());
         numSeleccionado = numSeleccionado(list);
         int numRandomSecundario = numRandomSecundario();
 
-        String link = "https://storage.googleapis.com/proyecto-mvp-java.appspot.com/a/";
+        String link = String.valueOf(R.string.linkA);;
 
         Glide.with(this).load(link + numSeleccionado + "_" + numRandomSecundario + ".jpg").into(ivCentral);
 
@@ -74,6 +78,12 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         ibOpcion3.setOnClickListener(this);
         ibOpcion4.setOnClickListener(this);
 
+
+        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        }
+
+         dialogModulo = new DialogModulo(this);
     }
 
     @Override
@@ -96,7 +106,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    static public List<Integer> listNumPrimeOpcion() {
+     public List<Integer> listNumPrimeOpcion() {
 
         List<Integer> listaNum = new ArrayList<>();
         int totalItems = 5;
@@ -109,13 +119,15 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         return listaNum.subList(0, 4);
     }
 
-    static public int numSeleccionado(List<Integer> listNumPrimeOpcion) {
-        Collections.shuffle(listNumPrimeOpcion);
-        return listNumPrimeOpcion.get(0);
+    public int numSeleccionado(List<Integer> listNumPrimeOpcion) {
+
+        int select = (int) ((Math.random()*listNumPrimeOpcion.size()));
+        Log.w("item seleccionado", select+"");
+        return listNumPrimeOpcion.get(select);
     }
 
 
-    static public int numOpcionSecundario(int numPrimeOpcion, int numSeleccionado, int numSecundario) {
+     public int numOpcionSecundario(int numPrimeOpcion, int numSeleccionado, int numSecundario) {
 
         if (numPrimeOpcion == numSeleccionado) {
             int selectSecundario = 0;
@@ -128,7 +140,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    static public int numRandomSecundario() {
+    public int numRandomSecundario() {
         int cantVariacionItems = 3;
         return (int) (Math.random() * cantVariacionItems) + 1;
 
@@ -136,10 +148,14 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
 
     public void coincidencia(int numPrimeOpcion, int numSeleccionado) {
         if (numPrimeOpcion == numSeleccionado) {
-            Toast.makeText(this, "ACIERTO", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "ACIERTO", Toast.LENGTH_SHORT).show();
+            dialogModulo.MensajeDialog(true);
+
         } else {
-            Toast.makeText(this, "SIGUE INTENTANDO", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "SIGUE INTENTANDO", Toast.LENGTH_SHORT).show();
+            dialogModulo.MensajeDialog(false);
         }
     }
+    @Override public void onBackPressed() {}
 
 }

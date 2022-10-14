@@ -1,7 +1,5 @@
 package utp.edu.mvp_firestore_java.presenter;
 
-import android.app.Activity;
-
 import utp.edu.mvp_firestore_java.contract.LoginContract;
 
 public class LoginPresenter implements LoginContract.Presenter {
@@ -19,8 +17,13 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void loginMensaje(String mensaje) {
-        view.loginMensaje(mensaje);
+    public void loginExitoMensaje(String mensaje) {
+        view.loginExitoMensaje(mensaje);
+    }
+
+    @Override
+    public void loginErrorMensaje(String mensaje) {
+        view.loginErrorMensaje(mensaje);
     }
 
 

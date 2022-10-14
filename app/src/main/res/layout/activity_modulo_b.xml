@@ -8,29 +8,76 @@
     tools:context=".view.ModuloBActivity">
 
     <LinearLayout
+        android:id="@+id/espacioLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:paddingHorizontal="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
+
 
         <LinearLayout
-            android:id="@+id/layoutDrop"
+            android:id="@+id/espacioSuperior"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/layoutDrag"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="Primero"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lines="1"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="Después"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lines="1"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="Luego "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lines="1"
+                android:paddingHorizontal="10dp"
+                 />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvDrop1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="2.5dp"
                 android:layout_weight="1"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
 
                 <ImageView
                     android:id="@+id/ivDrop1"
@@ -46,9 +93,10 @@
                 android:id="@+id/cvDrop2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="2.5dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
 
                 <ImageView
                     android:id="@+id/ivDrop2"
@@ -58,26 +106,46 @@
                     android:tag="0"
                     tools:srcCompat="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDrop3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2.5dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
+
+                <ImageView
+                    android:id="@+id/ivDrop3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:tag="0"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <Space
+            android:id="@+id/espacioCentral"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <LinearLayout
-            android:id="@+id/layoutDrag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="2.5dp"
                 android:layout_weight="1"
+
                 android:elevation="10dp"
+                app:cardBackgroundColor="#E8EAF6"
                 app:cardCornerRadius="10dp">
 
                 <ImageView
@@ -92,9 +160,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="2.5dp"
                 android:layout_weight="1"
+
                 android:elevation="10dp"
+                app:cardBackgroundColor="#E8EAF6"
                 app:cardCornerRadius="10dp">
 
                 <ImageView
@@ -105,8 +175,33 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2.5dp"
+                android:layout_weight="1"
+
+                android:elevation="10dp"
+                app:cardBackgroundColor="#E8EAF6"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/ivDrag3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
+        <Space
+            android:id="@+id/espacioInferior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -116,8 +211,8 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:clickable="true"
+        android:contentDescription="TODO"
         app:maxImageSize="35dp"
-        app:srcCompat="@drawable/ic_round_check_24"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/ic_round_check_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

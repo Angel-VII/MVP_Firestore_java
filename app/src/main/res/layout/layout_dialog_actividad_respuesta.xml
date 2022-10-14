@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txRespuestaModulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:text="¡Muy Bien!"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivRespuestaModulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vct_mensaje_1" />
+
+        <Button
+            android:id="@+id/btDialogContinuarModulo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_round_check_24"
+            android:drawableTint="@color/primaryTextColor"
+            android:text="Continuar" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

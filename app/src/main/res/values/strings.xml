@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MVP_Firestore_java</string>
+    <string name="app_name">AVNA</string>
+
+    <!-- ALFABETOS-->
+    <string name="abc_no_numbers">abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ</string>
+    <string name="abc_numbers">abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ12345678910</string>
+    <string name="abc_numbers_espaciado">abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ12345678910</string>
+    <string name="abc_numbersarroba">abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ12345678910@._-</string>
+    <string name="mail_format">(?:[^&lt;>()\\[\\].,;:\\s@\"]+(?:\\.[^&lt;>()\\[\\].,;:\\s@\"]+)*|\"[^\\n\"]+\")@(?:[^&lt;>()\\[\\].,;:\\s@\"]+\\.)+[^&lt;>()\\[\\]\\.,;:\\s@\"]{2,63}</string>
+
+    <string name="linkA"> https://storage.googleapis.com/proyecto-mvp-java.appspot.com/a/""</string>
+    <string name="linkB"> https://storage.googleapis.com/proyecto-mvp-java.appspot.com/b/""</string>
 </resources>

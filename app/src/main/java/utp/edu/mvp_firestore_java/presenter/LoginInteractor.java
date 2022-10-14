@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import utp.edu.mvp_firestore_java.contract.LoginContract;
 
-public class LoginInteractor implements LoginContract.Interactor {
+public class LoginInteractor  {
     LoginPresenter presenter;
     FirebaseAuth auth;
 
@@ -14,7 +14,6 @@ public class LoginInteractor implements LoginContract.Interactor {
         this.presenter = presenter;
     }
 
-    @Override
     public void loginEmailPass(String correo, String contrasena){
         auth = FirebaseAuth.getInstance();
         ingresarLogin(correo, contrasena);
@@ -23,9 +22,9 @@ public class LoginInteractor implements LoginContract.Interactor {
     protected void ingresarLogin(String correo, String contrasena) {
         auth.signInWithEmailAndPassword(correo, contrasena).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                presenter.loginMensaje("Inicio de sesión correcto");
+                presenter.loginExitoMensaje("Inicio de sesión correcto");
             } else {
-                presenter.loginMensaje("Dirección de correo inválida o no existe. Compruebe su contreseña.");
+                presenter.loginErrorMensaje("Dirección de correo inválida o no existe. Compruebe su contreseña.");
             }
         });
     }
