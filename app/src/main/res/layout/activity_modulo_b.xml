@@ -8,200 +8,217 @@
     tools:context=".view.ModuloBActivity">
 
     <LinearLayout
-        android:id="@+id/espacioLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
 
-
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbModuloB"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:title="Arrastra y ordena la secuencia"
+                tools:ignore="RtlHardcoded" />
+        </com.google.android.material.appbar.AppBarLayout>
         <LinearLayout
-            android:id="@+id/espacioSuperior"
+            android:id="@+id/espacioLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="@color/backgroundColor_5"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/textView4"
+
+            <LinearLayout
+                android:id="@+id/espacioSuperior"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="bottom|center_horizontal"
-                android:text="Primero"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:lines="1"
-                android:paddingHorizontal="10dp"
-                />
+                android:gravity="bottom"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView3"
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:lines="1"
+                    android:paddingHorizontal="10dp"
+                    android:text="Primero"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:lines="1"
+                    android:paddingHorizontal="10dp"
+                    android:text="Después"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:lines="1"
+                    android:paddingHorizontal="10dp"
+                    android:text="Luego "
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="bottom|center_horizontal"
-                android:text="Después"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:lines="1"
-                android:paddingHorizontal="10dp"
-                />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView2"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvDrop1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrop1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:tag="0"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvDrop2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrop2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:tag="0"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvDrop3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrop3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:tag="0"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <Space
+                android:id="@+id/espacioCentral"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="bottom|center_horizontal"
-                android:text="Luego "
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:lines="1"
-                android:paddingHorizontal="10dp"
-                 />
+                android:orientation="horizontal">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="@color/backgroundColor_5"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrag1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="@color/backgroundColor_5"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrag2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="@color/backgroundColor_5"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivDrag3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <Space
+                android:id="@+id/espacioInferior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvDrop1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
-
-                <ImageView
-                    android:id="@+id/ivDrop1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:tag="0"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvDrop2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
-
-                <ImageView
-                    android:id="@+id/ivDrop2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:tag="0"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvDrop3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp">
-
-                <ImageView
-                    android:id="@+id/ivDrop3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:tag="0"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/espacioCentral"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-
-                android:elevation="10dp"
-                app:cardBackgroundColor="#E8EAF6"
-                app:cardCornerRadius="10dp">
-
-                <ImageView
-                    android:id="@+id/ivDrag1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-
-                android:elevation="10dp"
-                app:cardBackgroundColor="#E8EAF6"
-                app:cardCornerRadius="10dp">
-
-                <ImageView
-                    android:id="@+id/ivDrag2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-
-                android:elevation="10dp"
-                app:cardBackgroundColor="#E8EAF6"
-                app:cardCornerRadius="10dp">
-
-                <ImageView
-                    android:id="@+id/ivDrag3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/espacioInferior"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

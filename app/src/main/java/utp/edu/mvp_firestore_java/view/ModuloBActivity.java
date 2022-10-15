@@ -1,9 +1,14 @@
 package utp.edu.mvp_firestore_java.view;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,10 +17,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import utp.edu.mvp_firestore_java.R;
 import utp.edu.mvp_firestore_java.Utils.DialogModulo;
@@ -25,6 +37,7 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
     CardView cvDrop1, cvDrop2, cvDrop3;
     ImageView ivDrag1, ivDrag2, ivDrag3, ivDrop1, ivDrop2, ivDrop3;
     FloatingActionButton fbCheck;
+    Toolbar tbModuloB;
     DialogModulo dialogModulo;
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -41,6 +54,7 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,17 +70,22 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         ivDrop2 = findViewById(R.id.ivDrop2);
         ivDrop3 = findViewById(R.id.ivDrop3);
         fbCheck = findViewById(R.id.fbCheck);
+        tbModuloB = findViewById(R.id.tbModuloB);
 
+        setSupportActionBar(tbModuloB);
 
-        String link =  String.valueOf(R.string.linkB);
+        String link =  getString(R.string.linkB);
 
-        Glide.with(this).load(link + 1 + "_" + 1 + ".jpg").into(ivDrag1);
-        Glide.with(this).load(link + 1 + "_" + 2 + ".jpg").into(ivDrag2);
-        Glide.with(this).load(link + 1 + "_" + 3 + ".jpg").into(ivDrag3);
+        List<Integer> listBaraja = new ArrayList<>();
+        listBaraja = barajarImagenes();
+        int numSecuencia = seleccionSecuencia();
+        Glide.with(this).load(link + numSecuencia + "_" + listBaraja.get(0) + ".jpg").into(ivDrag1);
+        Glide.with(this).load(link +  numSecuencia + "_" + listBaraja.get(1) + ".jpg").into(ivDrag2);
+        Glide.with(this).load(link +  numSecuencia + "_" + listBaraja.get(2) + ".jpg").into(ivDrag3);
 
-        ivDrag1.setTag(1);
-        ivDrag2.setTag(2);
-        ivDrag3.setTag(3);
+        ivDrag1.setTag(listBaraja.get(0));
+        ivDrag2.setTag(listBaraja.get(1));
+        ivDrag3.setTag(listBaraja.get(2));
 
         ivDrag1.setOnTouchListener(this);
         ivDrag2.setOnTouchListener(this);
@@ -82,6 +101,8 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         cvDrop3.setOnDragListener(this);
 
         dialogModulo = new DialogModulo(this);
+
+        pantallaHorizontal();
     }
 
     @Override
@@ -228,6 +249,41 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         findViewById(R.id.espacioCentral).setLayoutParams(childParam);
         findViewById(R.id.espacioSuperior).setLayoutParams(childParam);
         findViewById(R.id.espacioInferior).setLayoutParams(childParam);
+    }
+    public List<Integer> barajarImagenes(){
+        List<Integer> lista = Arrays.asList(3,2,1);
+        Collections.shuffle(lista);
+        return lista;
+    }
+    public int seleccionSecuencia(){
+        int numerosSecuencias = 9;
+        return (int) ((Math.random()*numerosSecuencias)+1);
+    }
+
+    public void pantallaHorizontal(){
+        LinearLayout.LayoutParams childParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        if (this.getResources().getConfiguration().orientation  == Configuration.ORIENTATION_LANDSCAPE) {
+            childParam.weight = 1.5f;
+            configuracionLayout(childParam);
+        }
+    }
+    //menu toolbar
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_toolbar_1, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.itemSalirActividad:
+                startActivity(new Intent(this,MenuModuloActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
     @Override public void onBackPressed() {}
 }

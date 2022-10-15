@@ -2,9 +2,11 @@ package utp.edu.mvp_firestore_java.presenter;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import utp.edu.mvp_firestore_java.model.Usuario;
+
 public class RegistroInteractor {
     RegistroPresenter presenter;
-    FirebaseAuth auth;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public RegistroInteractor(RegistroPresenter presenter){
         this.presenter = presenter;
@@ -12,13 +14,19 @@ public class RegistroInteractor {
     protected void registrarCuenta(String correo, String contrasena) {
         auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                presenter.registroMensaje("Inicio de sesión correcto");
+                presenter.registroExito("Registro correcto");
             } else {
-                presenter.registroMensaje("Dirección de correo inválida o no existe. Compruebe su contreseña.");
+                presenter.registroError("Dirección de correo inválida o no existe. Compruebe su contreseña.");
             }
 
         });
+
     }
+/*
+    public void registrarUserBD(String nombre, String rol){
+        Usuario usuario = new Usuario(nombre,rol);
+    }
+*/
  /*REGISTRO
     protected void compruebaEmail(String correo) {
 

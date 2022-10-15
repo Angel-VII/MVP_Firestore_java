@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btLogin.setOnClickListener(this);
         btCrearCuenta.setOnClickListener(this);
         presenter = new LoginPresenter(this);
+        auth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void loginExitoMensaje(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, CategoryListActivity.class));
+        startActivity(new Intent(this, MenuModuloActivity.class));
     }
 
     @Override

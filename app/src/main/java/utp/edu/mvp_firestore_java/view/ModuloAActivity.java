@@ -1,10 +1,12 @@
 package utp.edu.mvp_firestore_java.view;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
@@ -31,6 +34,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
     List<Integer> list;
     int numSeleccionado;
     DialogModulo dialogModulo;
+    Toolbar tbModuloA;
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -38,7 +42,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             linearLayout.setOrientation(LinearLayout.VERTICAL);
         }
     }
@@ -54,13 +58,16 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         ibOpcion2 = findViewById(R.id.ibOptionA_2);
         ibOpcion3 = findViewById(R.id.ibOptionA_3);
         ibOpcion4 = findViewById(R.id.ibOptionA_4);
+        tbModuloA = findViewById(R.id.tbModuloA);
+
+        setSupportActionBar(tbModuloA);
 
         list = listNumPrimeOpcion();
         Log.w("lista", list.toString());
         numSeleccionado = numSeleccionado(list);
         int numRandomSecundario = numRandomSecundario();
 
-        String link = String.valueOf(R.string.linkA);;
+        String link = getString(R.string.linkA);
 
         Glide.with(this).load(link + numSeleccionado + "_" + numRandomSecundario + ".jpg").into(ivCentral);
 
@@ -79,11 +86,11 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         ibOpcion4.setOnClickListener(this);
 
 
-        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         }
 
-         dialogModulo = new DialogModulo(this);
+        dialogModulo = new DialogModulo(this);
     }
 
     @Override
@@ -106,7 +113,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-     public List<Integer> listNumPrimeOpcion() {
+    public List<Integer> listNumPrimeOpcion() {
 
         List<Integer> listaNum = new ArrayList<>();
         int totalItems = 5;
@@ -121,13 +128,13 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
 
     public int numSeleccionado(List<Integer> listNumPrimeOpcion) {
 
-        int select = (int) ((Math.random()*listNumPrimeOpcion.size()));
-        Log.w("item seleccionado", select+"");
+        int select = (int) ((Math.random() * listNumPrimeOpcion.size()));
+        Log.w("item seleccionado", select + "");
         return listNumPrimeOpcion.get(select);
     }
 
 
-     public int numOpcionSecundario(int numPrimeOpcion, int numSeleccionado, int numSecundario) {
+    public int numOpcionSecundario(int numPrimeOpcion, int numSeleccionado, int numSecundario) {
 
         if (numPrimeOpcion == numSeleccionado) {
             int selectSecundario = 0;
@@ -152,10 +159,33 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
             dialogModulo.MensajeDialog(true);
 
         } else {
-           // Toast.makeText(this, "SIGUE INTENTANDO", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "SIGUE INTENTANDO", Toast.LENGTH_SHORT).show();
             dialogModulo.MensajeDialog(false);
         }
     }
-    @Override public void onBackPressed() {}
+
+    //menu toolbar
+  @Override
+    public boolean onCreateOptionsMenu( Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_toolbar_1, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.itemSalirActividad:
+                startActivity(new Intent(this,MenuModuloActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
 
 }

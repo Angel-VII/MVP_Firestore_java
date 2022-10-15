@@ -14,12 +14,13 @@
         android:gravity="right">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbMenuActividad"
+            android:id="@+id/tbModuloA"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:title="Selecciona una imagen"
+
+            app:title="Elije la imagen relacionada"
             tools:ignore="RtlHardcoded" />
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
@@ -29,6 +30,7 @@
         android:layout_weight="1"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
+        android:background="@color/backgroundColor_3"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView

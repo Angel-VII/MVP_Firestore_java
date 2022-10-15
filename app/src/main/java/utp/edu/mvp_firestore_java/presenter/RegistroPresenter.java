@@ -17,7 +17,12 @@ public class RegistroPresenter implements RegistroContract.Presenter {
     }
 
     @Override
-    public void registroMensaje(String mensaje) {
-        view.registroMensaje(mensaje);
+    public void registroExito(String mensaje) {
+        view.registroExito(mensaje);
+    }
+
+    @Override
+    public void registroError(String mensaje) {
+        view.registroError(mensaje);
     }
 }

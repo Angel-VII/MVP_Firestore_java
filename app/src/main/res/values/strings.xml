@@ -8,6 +8,6 @@
     <string name="abc_numbersarroba">abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ12345678910@._-</string>
     <string name="mail_format">(?:[^&lt;>()\\[\\].,;:\\s@\"]+(?:\\.[^&lt;>()\\[\\].,;:\\s@\"]+)*|\"[^\\n\"]+\")@(?:[^&lt;>()\\[\\].,;:\\s@\"]+\\.)+[^&lt;>()\\[\\]\\.,;:\\s@\"]{2,63}</string>
 
-    <string name="linkA"> https://storage.googleapis.com/proyecto-mvp-java.appspot.com/a/""</string>
-    <string name="linkB"> https://storage.googleapis.com/proyecto-mvp-java.appspot.com/b/""</string>
+    <string name="linkA">https://storage.googleapis.com/proyecto-mvp-java.appspot.com/a/</string>
+    <string name="linkB">https://storage.googleapis.com/proyecto-mvp-java.appspot.com/b/</string>
 </resources>

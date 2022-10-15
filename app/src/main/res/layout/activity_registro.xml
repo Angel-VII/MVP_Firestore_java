@@ -55,7 +55,7 @@
                     android:contentDescription="nombre"
                     android:digits="@string/abc_numbers_espaciado"
                     android:hint="Nombres"
-                    android:inputType="textCapSentences" />
+                    android:inputType="textPersonName|textCapSentences" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +71,7 @@
                     android:contentDescription="correo"
                     android:digits="@string/abc_numbersarroba"
                     android:hint="Correo"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress|textEmailSubject" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,9 +107,12 @@
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <RadioGroup
+                android:id="@+id/rgRolUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:checkedButton="@id/rbRol1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -118,10 +121,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="right|center_vertical"
-                    android:text="Usuario TEA:"  />
+                    android:text="Usuario TEA:" />
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rbRol1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -134,11 +137,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="right|center_vertical"
-                    android:text="Especialista:"
-                    />
+                    android:text="Especialista:" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/rbRol2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
