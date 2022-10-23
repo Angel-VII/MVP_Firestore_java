@@ -1,10 +1,6 @@
 package utp.edu.mvp_firestore_java.presenter;
 
-import android.app.Activity;
-
 import com.google.firebase.auth.FirebaseAuth;
-
-import utp.edu.mvp_firestore_java.contract.LoginContract;
 
 public class LoginInteractor  {
     LoginPresenter presenter;
@@ -28,5 +24,4 @@ public class LoginInteractor  {
             }
         });
     }
-
 }

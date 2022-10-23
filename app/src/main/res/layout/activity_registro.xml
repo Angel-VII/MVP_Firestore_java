@@ -55,6 +55,8 @@
                     android:contentDescription="nombre"
                     android:digits="@string/abc_numbers_espaciado"
                     android:hint="Nombres"
+                    android:minLines="1"
+                    android:maxLength="35"
                     android:inputType="textPersonName|textCapSentences" />
             </com.google.android.material.textfield.TextInputLayout>
 

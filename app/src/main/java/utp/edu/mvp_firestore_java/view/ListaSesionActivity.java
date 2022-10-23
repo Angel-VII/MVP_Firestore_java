@@ -1,8 +1,8 @@
 package utp.edu.mvp_firestore_java.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import utp.edu.mvp_firestore_java.R;
 

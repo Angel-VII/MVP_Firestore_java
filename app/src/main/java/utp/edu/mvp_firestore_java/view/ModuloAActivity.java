@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -177,6 +176,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
     public boolean onOptionsItemSelected( MenuItem item) {
         switch (item.getItemId()) {
             case R.id.itemSalirActividad:
+                finish();
                 startActivity(new Intent(this,MenuModuloActivity.class));
                 return true;
             default:

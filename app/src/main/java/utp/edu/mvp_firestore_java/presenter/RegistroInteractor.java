@@ -2,8 +2,6 @@ package utp.edu.mvp_firestore_java.presenter;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import utp.edu.mvp_firestore_java.model.Usuario;
-
 public class RegistroInteractor {
     RegistroPresenter presenter;
     FirebaseAuth auth = FirebaseAuth.getInstance();

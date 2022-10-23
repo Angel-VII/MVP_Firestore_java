@@ -1,7 +1,6 @@
 package utp.edu.mvp_firestore_java.Utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,7 @@ public DialogModulo(Activity activity){
     LayoutInflater inflater = activity.getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-        final View v = inflater.inflate(R.layout.layout_dialog_actividad_respuesta, null);
+        final View v = inflater.inflate(R.layout.dialog_actividad_respuesta, null);
         builder.setView(v);
         final AlertDialog dialog = builder.create();
 

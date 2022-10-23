@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "486912859246-mqrf6o5mmt4qb9thubpdtcvq7n7rk2e9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "utp.edu.mvp_firestore_java",
+            "certificate_hash": "3d4b52e2be09825ffc045c01b58069bc9f349a84"
+          }
+        },
+        {
           "client_id": "486912859246-9lg192kq7f8qaj1ahfprftfgu7dht80d.apps.googleusercontent.com",
           "client_type": 3
         }
