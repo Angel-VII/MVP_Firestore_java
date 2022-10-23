@@ -49,7 +49,7 @@
                 app:endIconMode="clear_text">
 
                 <EditText
-                    android:id="@+id/edNombreRegistro"
+                    android:id="@+id/edNombreUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:contentDescription="nombre"
@@ -111,10 +111,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
-                android:id="@+id/rgRolUsuario"
+                android:id="@+id/rgRolesUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:checkedButton="@id/rbRol1"
+                android:checkedButton="@id/rbRolUser1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -126,7 +126,7 @@
                     android:text="Usuario TEA:" />
 
                 <RadioButton
-                    android:id="@+id/rbRol1"
+                    android:id="@+id/rbRolUser1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -142,7 +142,7 @@
                     android:text="Especialista:" />
 
                 <RadioButton
-                    android:id="@+id/rbRol2"
+                    android:id="@+id/rbRolUser2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"

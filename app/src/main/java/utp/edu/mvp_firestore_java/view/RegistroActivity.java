@@ -32,13 +32,13 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        edNombre = findViewById(R.id.edNombreRegistro);
+        edNombre = findViewById(R.id.edNombreUsuario);
         edCorreo = findViewById(R.id.edCorreoRegistro);
         edContrasena = findViewById(R.id.edPassRegistro);
         edContrasenaConfirm = findViewById(R.id.edPassConfirmRegistro);
         btEnviarRegistro = findViewById(R.id.btEnviarResgistro);
         btRegresaLogin = findViewById(R.id.btRegresarLogin);
-        rgRolUsuario = findViewById(R.id.rgRolUsuario);
+        rgRolUsuario = findViewById(R.id.rgRolesUser);
 
 
         presenter = new RegistroPresenter(this);
@@ -65,10 +65,10 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void registroExito(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-        String tipoPago = rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRol1 ? "1" : "2";
-        registrarUserBD(edNombre.getText().toString(),tipoPago );
+        String tipoPago = rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRolUser1 ? "1" : "2";
+        registrarUserBD(edNombre.getText().toString(), tipoPago);
 
-        startActivity(new Intent(this,LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Override
