@@ -22,7 +22,7 @@ import utp.edu.mvp_firestore_java.presenter.RegistroPresenter;
 public class RegistroActivity extends AppCompatActivity implements View.OnClickListener, RegistroContract.View {
     RegistroPresenter presenter;
 
-    EditText edNombre, edCorreo, edContrasena, edContrasenaConfirm;
+    EditText edNombre, edCorreo, edContrasena/*, edContrasenaConfirm*/;
     Button btEnviarRegistro, btRegresaLogin;
     RadioGroup rgRolUsuario;
 
@@ -35,7 +35,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         edNombre = findViewById(R.id.edNombreUsuario);
         edCorreo = findViewById(R.id.edCorreoRegistro);
         edContrasena = findViewById(R.id.edPassRegistro);
-        edContrasenaConfirm = findViewById(R.id.edPassConfirmRegistro);
+        //edContrasenaConfirm = findViewById(R.id.edPassConfirmRegistro);
         btEnviarRegistro = findViewById(R.id.btEnviarResgistro);
         btRegresaLogin = findViewById(R.id.btRegresarLogin);
         rgRolUsuario = findViewById(R.id.rgRolesUser);
@@ -51,10 +51,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btEnviarResgistro:
-                presenter.registroDatos(
-                        edNombre.getText().toString(),
-                        edCorreo.getText().toString(),
-                        edContrasena.getText().toString());
+                entradaDatos();
                 break;
             case R.id.btRegresarLogin:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -67,7 +64,6 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
         String tipoPago = rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRolUser1 ? "1" : "2";
         registrarUserBD(edNombre.getText().toString(), tipoPago);
-
         startActivity(new Intent(this, LoginActivity.class));
     }
 
@@ -77,20 +73,39 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    public boolean isValidEmail(String emailToReview) {
-        if (!emailToReview.matches(getString(R.string.mail_format))) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public void registrarUserBD(String nombre, String rol) {
         Usuario usuario = new Usuario(nombre, rol);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         firestore.collection("usuario").document(auth.getUid()).set(usuario);
         auth.signOut();
+    }
+
+    public void entradaDatos() {
+        if (!edNombre.getText().toString().equals("")
+                && !edCorreo.getText().toString().equals("")
+                && !edContrasena.getText().toString().equals("")) {
+            compruebaCorreoPassword();
+        } else {
+            Toast.makeText(this, "Complete todos lo campos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void compruebaCorreoPassword() {
+
+        if (edCorreo.getText().toString().matches(getString(R.string.mail_format))) {
+            if (edContrasena.getText().toString().length() >= 6) {
+                presenter.registroDatos(
+                        edNombre.getText().toString(),
+                        edCorreo.getText().toString(),
+                        edContrasena.getText().toString());
+            } else {
+                edContrasena.setError("Ingrese una contraseña de 6 o más carácteres");
+            }
+        } else {
+            edCorreo.setError("Formato de correo no admitido");
+        }
+
     }
 
 }

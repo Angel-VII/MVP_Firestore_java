@@ -2,6 +2,8 @@ package utp.edu.mvp_firestore_java.Utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +33,6 @@ public class DialogValidaUsuario {
     public void validaDatoUsuario(FirebaseUser user) {
 
         firestore = FirebaseFirestore.getInstance();
-
         firestore.collection("usuario").document(user.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
@@ -46,7 +47,6 @@ public class DialogValidaUsuario {
             } else {
                 Toast.makeText(activity, "Hubo un error al registrar usuario", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 
@@ -64,6 +64,7 @@ public class DialogValidaUsuario {
         Usuario usuario = new Usuario(edNombreUser.getText().toString()
                 , rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRolUser1 ? "1" : "2");
         confirmaDatos(v, user, usuario);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 
@@ -76,10 +77,15 @@ public class DialogValidaUsuario {
     }
 
     public void ingresarRolUsuario(String rol) {
-        if (rol.equals("1")) {
-            activity.startActivity(new Intent(activity, MenuModuloActivity.class));
-        } else if (rol.equals("2")) {
-            activity.startActivity(new Intent(activity, ListaSesionActivity.class));
+        switch (rol) {
+            case "1":
+                activity.startActivity(new Intent(activity, MenuModuloActivity.class));
+                activity.finish();
+                break;
+            case "2":
+                activity.startActivity(new Intent(activity, ListaSesionActivity.class));
+                activity.finish();
+                break;
         }
     }
 

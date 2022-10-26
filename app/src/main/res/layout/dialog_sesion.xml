@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="sans-serif"
+            android:text="Nueva Sesión"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            app:endIconMode="clear_text">
+
+            <EditText
+                android:id="@+id/edNombreSesion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="nombre"
+                android:digits="@string/abc_numbers_espaciado"
+                android:hint="Nombre de sesión"
+                android:inputType="textPersonName|textCapSentences"
+                android:maxLength="35"
+                android:minLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="Cant. de Actividades "
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryColor" />
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:text="Actividad de\nRelacionar"
+                    android:textAlignment="center" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="15dp" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="2"
+                    android:text="Actividad de\nOrdenar"
+                    android:textAlignment="center" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <NumberPicker
+                    android:id="@+id/npActividadA"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <NumberPicker
+                    android:id="@+id/npActividadB"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btConfimarDatosUser"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="15dp"
+            android:layout_weight="1"
+            android:text="Crear sesión" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

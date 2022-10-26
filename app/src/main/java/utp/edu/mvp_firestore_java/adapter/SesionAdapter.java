@@ -13,13 +13,14 @@ import java.util.ArrayList;
 
 import utp.edu.mvp_firestore_java.R;
 import utp.edu.mvp_firestore_java.model.Category;
+import utp.edu.mvp_firestore_java.model.Sesion;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class SesionAdapter extends RecyclerView.Adapter<SesionAdapter.ViewHolder> {
 
-    ArrayList<Category> list;
+    ArrayList<Sesion> list;
     Context context;
 
-    public CategoryAdapter(ArrayList<Category> list, Context context) {
+    public SesionAdapter(ArrayList<Sesion> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -27,17 +28,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_sesion, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Category c = list.get(position);
+        Sesion s = list.get(position);
 
-        holder.lblTitle.setText(c.getTitle());
-        holder.lblDescription.setText(c.getDescription());
+        holder.txNombreSesion.setText(s.getNombre());
+        holder.txFechaCreacion.setText(s.getFecha_creacion());
     }
 
     @Override
@@ -46,12 +47,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView lblTitle, lblDescription;
+        TextView txNombreSesion, txFechaCreacion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            lblTitle = itemView.findViewById(R.id.lbCategoty);
-            lblDescription = itemView.findViewById(R.id.lbDescription);
+            txNombreSesion = itemView.findViewById(R.id.txNombreSesion);
+            txFechaCreacion = itemView.findViewById(R.id.txFecha);
 
         }
     }

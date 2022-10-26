@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
     }
 
     @Override
@@ -69,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
             validaUsuario.validaDatoUsuario(user);
-            // startActivity(new Intent(this, MenuModuloActivity.class));
+            //startActivity(new Intent(this, MenuModuloActivity.class));
         }
     }
 
@@ -156,9 +158,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void inicioGoogle() {
-        finish();
-        startActivity(new Intent(getApplicationContext(), MenuModuloActivity.class));
-    }
 
 }

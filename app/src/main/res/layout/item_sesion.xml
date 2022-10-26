@@ -14,18 +14,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lbCategoty"
+            android:id="@+id/txNombreSesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category"
+            android:text="Nombre sesion"
+            android:textAllCaps="true"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/lbDescription"
+            android:id="@+id/txFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="20sp" />
+            android:text="Fecha de creación: "
+            android:textSize="14sp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
