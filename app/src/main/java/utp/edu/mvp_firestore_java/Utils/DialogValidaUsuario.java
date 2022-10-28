@@ -21,6 +21,7 @@ import utp.edu.mvp_firestore_java.R;
 import utp.edu.mvp_firestore_java.model.Usuario;
 import utp.edu.mvp_firestore_java.view.ListaSesionActivity;
 import utp.edu.mvp_firestore_java.view.MenuModuloActivity;
+import utp.edu.mvp_firestore_java.view.SelectorSesionActivity;
 
 public class DialogValidaUsuario {
     private Activity activity;
@@ -38,7 +39,7 @@ public class DialogValidaUsuario {
                 DocumentSnapshot document = task.getResult();
                 Usuario usuario = document.toObject(Usuario.class);
                 if (usuario != null) {
-                    Toast.makeText(activity, usuario.getNombre() + usuario.getRol(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(activity, usuario.getNombre() + usuario.getRol(), Toast.LENGTH_SHORT).show();
                     ingresarRolUsuario(usuario.getRol());
 
                 } else {
@@ -62,6 +63,7 @@ public class DialogValidaUsuario {
         EditText edNombreUser = v.findViewById(R.id.edNombreUsuario);
         RadioGroup rgRolUsuario = v.findViewById(R.id.rgRolesUser);
         Usuario usuario = new Usuario(edNombreUser.getText().toString()
+                , user.getEmail()
                 , rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRolUser1 ? "1" : "2");
         confirmaDatos(v, user, usuario);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -79,7 +81,7 @@ public class DialogValidaUsuario {
     public void ingresarRolUsuario(String rol) {
         switch (rol) {
             case "1":
-                activity.startActivity(new Intent(activity, MenuModuloActivity.class));
+                activity.startActivity(new Intent(activity, SelectorSesionActivity.class));
                 activity.finish();
                 break;
             case "2":

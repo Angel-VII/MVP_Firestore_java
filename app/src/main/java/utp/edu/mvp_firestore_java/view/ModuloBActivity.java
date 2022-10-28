@@ -30,6 +30,7 @@ import java.util.List;
 
 import utp.edu.mvp_firestore_java.R;
 import utp.edu.mvp_firestore_java.Utils.DialogModulo;
+import utp.edu.mvp_firestore_java.Utils.GlobalHistorial;
 
 public class ModuloBActivity extends AppCompatActivity implements View.OnTouchListener, View.OnDragListener, View.OnClickListener {
 
@@ -255,7 +256,7 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         return lista;
     }
     public int seleccionSecuencia(){
-        int numerosSecuencias = 9;
+        int numerosSecuencias = 9; //cantidad de serie de secuencias subidas
         return (int) ((Math.random()*numerosSecuencias)+1);
     }
 
@@ -278,7 +279,10 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.itemSalirActividad:
-                startActivity(new Intent(this,MenuModuloActivity.class));
+                Intent intent = new Intent(this,MenuModuloActivity.class);
+                intent.putExtra("ID_SESION", GlobalHistorial.getIdSesion());
+                startActivity(intent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

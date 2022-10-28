@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemSesionActividad"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/background_2_ripple"
+    android:elevation="2dp"
+    app:cardCornerRadius="8dp"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -14,7 +20,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txNombreSesion"
+            android:id="@+id/txNombreSesionActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre sesion"
@@ -22,11 +28,11 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txFecha"
+            android:id="@+id/txFechaHistorialActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fecha de creación: "
             android:textSize="14sp" />
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

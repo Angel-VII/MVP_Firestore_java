@@ -63,7 +63,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     public void registroExito(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
         String tipoPago = rgRolUsuario.getCheckedRadioButtonId() == R.id.rbRolUser1 ? "1" : "2";
-        registrarUserBD(edNombre.getText().toString(), tipoPago);
+        registrarUserBD(edNombre.getText().toString(),edCorreo.getText().toString(), tipoPago);
         startActivity(new Intent(this, LoginActivity.class));
     }
 
@@ -73,8 +73,8 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    public void registrarUserBD(String nombre, String rol) {
-        Usuario usuario = new Usuario(nombre, rol);
+    public void registrarUserBD(String nombre,String correo, String rol) {
+        Usuario usuario = new Usuario(nombre, correo, rol);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         firestore.collection("usuario").document(auth.getUid()).set(usuario);

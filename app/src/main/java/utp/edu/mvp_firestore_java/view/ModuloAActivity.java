@@ -24,6 +24,7 @@ import java.util.List;
 
 import utp.edu.mvp_firestore_java.R;
 import utp.edu.mvp_firestore_java.Utils.DialogModulo;
+import utp.edu.mvp_firestore_java.Utils.GlobalHistorial;
 
 public class ModuloAActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,6 +35,7 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
     int numSeleccionado;
     DialogModulo dialogModulo;
     Toolbar tbModuloA;
+
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -84,11 +86,9 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
         ibOpcion3.setOnClickListener(this);
         ibOpcion4.setOnClickListener(this);
 
-
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         }
-
         dialogModulo = new DialogModulo(this);
     }
 
@@ -164,20 +164,21 @@ public class ModuloAActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     //menu toolbar
-  @Override
-    public boolean onCreateOptionsMenu( Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_toolbar_1, menu);
         return true;
     }
 
-
     @Override
-    public boolean onOptionsItemSelected( MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.itemSalirActividad:
+                Intent intent = new Intent(this, MenuModuloActivity.class);
+                intent.putExtra("ID_SESION", GlobalHistorial.getIdSesion());
+                startActivity(intent);
                 finish();
-                startActivity(new Intent(this,MenuModuloActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

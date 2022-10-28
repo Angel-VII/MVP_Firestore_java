@@ -8,9 +8,9 @@ public class SesionPresenter implements SesionContract.Presenter {
     SesionContract.View view;
     SesionInteractor interactor;
 
-    public SesionPresenter(final SesionContract.View view) {
+    public SesionPresenter(final SesionContract.View view ,String filtroUsuario) {
         this.view = view;
-        this.interactor = new SesionInteractor(this);
+        this.interactor = new SesionInteractor(this, filtroUsuario);
     }
 
     @Override

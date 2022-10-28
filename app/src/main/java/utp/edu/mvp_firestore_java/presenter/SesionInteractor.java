@@ -1,11 +1,10 @@
 package utp.edu.mvp_firestore_java.presenter;
 
-import android.util.Log;
-
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,22 @@ public class SesionInteractor {
     ArrayList<Sesion> list = new ArrayList<>();
     CollectionReference sesionCollection = FirebaseFirestore.getInstance().collection("sesion");
     SesionPresenter presenter;
+    //FirebaseAuth auth;
 
-    SesionInteractor(SesionPresenter presenter) {
+    SesionInteractor(SesionPresenter presenter,String filtroUsuario ) {
         this.presenter = presenter;
-        sesionListener();
+        sesionListener(filtroUsuario);
     }
 
-    private void sesionListener() {
-        sesionCollection.addSnapshotListener((queryDocumentSnapshots, error) -> {
+    private void sesionListener(String filtroUsuario ) {
+        //auth = FirebaseAuth.getInstance();
+        //.whereEqualTo("id_usuario",auth.getUid()+"")
+
+        Query query = sesionCollection;
+        if(!filtroUsuario.equals("")){
+            query =  sesionCollection.whereEqualTo("id_usuario",filtroUsuario);
+        }
+        query.addSnapshotListener((queryDocumentSnapshots, error) -> {
             updateValues(queryDocumentSnapshots.getDocumentChanges());
         });
     }
@@ -32,7 +39,7 @@ public class SesionInteractor {
         int position;
         for (DocumentChange document_change : changeList) {
             DocumentSnapshot document = document_change.getDocument();
-            Log.w("pruebaLista", document.getId());
+
             position = itemPosition(document.getId());
             if (document_change.getType() == DocumentChange.Type.REMOVED) {
                 list.remove(position);
@@ -44,7 +51,6 @@ public class SesionInteractor {
                     presenter.updateItemP(position, sesion);
                 } else {
                     list.add(sesion);
-                    Log.w("pruebaLista add", sesion.getId());
                     presenter.addItemP(sesion);
                 }
             }
@@ -54,7 +60,6 @@ public class SesionInteractor {
     protected Sesion getSesion(DocumentSnapshot document) {
         Sesion sesion = document.toObject(Sesion.class);
 
-        Log.w("pruebaLista", sesion.getId());
         //sesion.setId(document.getId());
         //esion.setNombre(document.getString("title"));
         // sesion.setFecha_creacion(document.getString("description"));
