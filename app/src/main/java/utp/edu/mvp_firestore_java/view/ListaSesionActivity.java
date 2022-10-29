@@ -115,4 +115,5 @@ public class ListaSesionActivity extends AppCompatActivity implements View.OnCli
                 return super.onOptionsItemSelected(item);
         }
     }
+    @Override public void onBackPressed() {}
 }

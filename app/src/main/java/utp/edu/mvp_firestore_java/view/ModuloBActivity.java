@@ -256,7 +256,7 @@ public class ModuloBActivity extends AppCompatActivity implements View.OnTouchLi
         return lista;
     }
     public int seleccionSecuencia(){
-        int numerosSecuencias = 9; //cantidad de serie de secuencias subidas
+        int numerosSecuencias = 21; //cantidad de serie de secuencias subidas
         return (int) ((Math.random()*numerosSecuencias)+1);
     }
 

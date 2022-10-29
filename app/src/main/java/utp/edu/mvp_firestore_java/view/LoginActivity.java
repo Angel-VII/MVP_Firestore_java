@@ -180,9 +180,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (signInAccountTask.isSuccessful()) {
                             // When google sign in successful
                             // Initialize string
-                            String s = "Google sign in successful";
+                            //String s = "Google sign in successful";
 
-                            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                             // Initialize sign in account
                             try {
                                 // Initialize sign in account
@@ -193,13 +193,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     // Initialize auth credential
                                     AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
                                     // Check credential
-
                                     auth.signInWithCredential(authCredential).addOnCompleteListener(task -> {
                                         if (task.isSuccessful()) {
                                             validaUsuario.validaDatoUsuario(auth.getCurrentUser());
-                                            Toast.makeText(getApplicationContext(), "Firebase authentication successful", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Autenticación Exitosa", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            Toast.makeText(getApplicationContext(), "Authentication Failed :" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Error de Autenticación :" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }

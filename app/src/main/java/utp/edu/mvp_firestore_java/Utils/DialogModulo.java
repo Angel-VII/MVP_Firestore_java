@@ -119,7 +119,7 @@ public class DialogModulo {
         firestore.collection("historial").document().set(historial);
     }
     public String fechaActual() {
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date tiempoActual = new Date();
         return formatoFecha.format(tiempoActual);
     }

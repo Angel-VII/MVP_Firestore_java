@@ -92,4 +92,5 @@ public class SelectorSesionActivity extends AppCompatActivity implements SesionC
                 return super.onOptionsItemSelected(item);
         }
     }
+    @Override public void onBackPressed() {}
 }
