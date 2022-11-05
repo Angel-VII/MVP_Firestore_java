@@ -1,7 +1,10 @@
 package utp.edu.mvp_firestore_java.view;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,10 +79,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
+
         if (user != null) {
+            progressBar();
             validaUsuario.validaDatoUsuario(user);
             //startActivity(new Intent(this, MenuModuloActivity.class));
         }
+
     }
 
     @Override
@@ -209,6 +215,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }
             });
-
+        public void progressBar(){
+            ProgressDialog progressDialog =  new ProgressDialog(this);
+            progressDialog.show();
+            progressDialog.setCancelable(false);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setMessage("Espere...");
+        }
 
 }

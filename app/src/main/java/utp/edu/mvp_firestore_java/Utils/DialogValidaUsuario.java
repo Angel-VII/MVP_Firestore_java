@@ -1,6 +1,7 @@
 package utp.edu.mvp_firestore_java.Utils;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import utp.edu.mvp_firestore_java.view.SelectorSesionActivity;
 public class DialogValidaUsuario {
     private Activity activity;
     private FirebaseFirestore firestore;
+
 
     public DialogValidaUsuario(Activity activity) {
         this.activity = activity;
@@ -49,6 +52,7 @@ public class DialogValidaUsuario {
                 Toast.makeText(activity, "Hubo un error al registrar usuario", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     public void dialogDatosUsuario(FirebaseUser user) {

@@ -1,6 +1,7 @@
 package utp.edu.mvp_firestore_java.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,9 +15,13 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,8 +44,9 @@ public class HistorialActivity extends AppCompatActivity {
     BarChart chartActividadA;
     BarChart chartActividadB;
     String idSesion;
-    int cantActA;
+    int cantActA,cantActB;
     ArrayList<Usuario> usuarios;
+    Toolbar tbHistorial;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -50,9 +56,15 @@ public class HistorialActivity extends AppCompatActivity {
         chartActividadA = findViewById(R.id.chartHistorialA);
         chartActividadB = findViewById(R.id.chartHistorialB);
         acListaIntegrantes = findViewById(R.id.acListaIntegrantes);
+        tbHistorial  = findViewById(R.id.tbHistorial);
+        setSupportActionBar(tbHistorial);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         firestore = FirebaseFirestore.getInstance();
         idSesion = getIntent().getStringExtra("ID_SESION");
         cantActA =  Integer.parseInt( getIntent().getStringExtra("CANT_A")) ;
+        cantActB =  Integer.parseInt( getIntent().getStringExtra("CANT_B")) ;
         Log.w("ID sesion",cantActA +"");
 
 
@@ -117,22 +129,41 @@ public class HistorialActivity extends AppCompatActivity {
                                 }
 
                             }
-                            graficoChart(entradas, "Actividad Relacionar", chartActividadA);
-                            graficoChart(entradas2, "Actividad Orden", chartActividadB);
+                            graficoChart(entradas, "Cant. aciertos de "+ cantActA+ " ejercicios x activ. ("+entradas.size()+" intentos)", chartActividadA, (long) cantActA);
+                            graficoChart(entradas2, "Cant. aciertos de "+ cantActB+" ejercicios x activ. ("+entradas2.size()+" intentos)", chartActividadB,(long) cantActB);
                         });
             }
         });
     }
 
-    public void graficoChart(List<BarEntry> entrada, String etiqueta, BarChart chart){
+    public void graficoChart(List<BarEntry> entrada, String etiqueta, BarChart chart , Long valorMax){
         BarDataSet set = new BarDataSet(entrada, etiqueta);
         set.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData data = new BarData(set);
         data.setBarWidth(0.9f);
-
         chart.setData(data);
         chart.setFitBars(true);
-        chart.invalidate();
-    }
+        chart.setDescription(null);
 
+        chart.getAxisLeft().setAxisMaximum(valorMax);
+        chart.getAxisLeft().setAxisMinimum(0);
+        chart.getAxisLeft().setGranularity(1);
+
+        chart.getAxisRight().setAxisMaximum(valorMax);
+        chart.getAxisRight().setAxisMinimum(0);
+        chart.getAxisRight().setGranularity(1);
+
+        chart.getXAxis().setGranularity(1);
+        chart.getXAxis().setDrawGridLines(false);
+        chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        chart.fitScreen();
+        chart.invalidate();
+        chart.refreshDrawableState();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }
