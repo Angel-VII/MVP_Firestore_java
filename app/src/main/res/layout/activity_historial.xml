@@ -38,18 +38,19 @@
           </Spinner>-->
 
         <com.google.android.material.textfield.TextInputLayout
-
+            android:id="@+id/tlIntegrantes"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            app:placeholderText="Seleccione..."
             android:hint="Integrante a evaluar">
 
             <AutoCompleteTextView
                 android:id="@+id/acListaIntegrantes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Seleccione..."
+
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>

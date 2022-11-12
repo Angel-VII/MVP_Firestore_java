@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListPopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -41,6 +44,7 @@ import utp.edu.mvp_firestore_java.model.Usuario;
 public class HistorialActivity extends AppCompatActivity {
     AutoCompleteTextView acListaIntegrantes;
     FirebaseFirestore firestore;
+    TextInputLayout tlIntegrantes;
     BarChart chartActividadA;
     BarChart chartActividadB;
     String idSesion;
@@ -57,16 +61,17 @@ public class HistorialActivity extends AppCompatActivity {
         chartActividadB = findViewById(R.id.chartHistorialB);
         acListaIntegrantes = findViewById(R.id.acListaIntegrantes);
         tbHistorial  = findViewById(R.id.tbHistorial);
+        tlIntegrantes =findViewById(R.id.tlIntegrantes);
         setSupportActionBar(tbHistorial);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         firestore = FirebaseFirestore.getInstance();
         idSesion = getIntent().getStringExtra("ID_SESION");
         cantActA =  Integer.parseInt( getIntent().getStringExtra("CANT_A")) ;
         cantActB =  Integer.parseInt( getIntent().getStringExtra("CANT_B")) ;
         Log.w("ID sesion",cantActA +"");
-
 
         firestore.collection("historial").whereEqualTo("id_sesion", idSesion).get()
                 .addOnCompleteListener(task -> {
@@ -101,7 +106,8 @@ public class HistorialActivity extends AppCompatActivity {
                 seleccionarItem(usuarios);
             });
         }else {
-            acListaIntegrantes.setHint("No hay integrantes en esta sesión");
+            tlIntegrantes.setPlaceholderText("No hay integrantes en esta sesión");
+           // acListaIntegrantes.setHint("No hay integrantes en esta sesión");
         }
     }
 
